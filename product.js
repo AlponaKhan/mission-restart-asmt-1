@@ -13,6 +13,7 @@ const allProducts = () => {
 
 }
 
+
 const loadProducts = (ctgory) => {
     const url = `https://fakestoreapi.com/products/category/${ctgory}`
     fetch(url)
@@ -26,20 +27,18 @@ const loadProducts = (ctgory) => {
 
 const loadProductDetails = async (id) => {
     const url = `https://fakestoreapi.com/products/${id}`;
-    // console.log(url);
     const res = await fetch(url);
     const details = await res.json();
     displayProductDetails(details);
 }
 
 const displayProductDetails = (product) => {
-    console.log(product);
     const detailsMode = document.getElementById("details-container");
     detailsMode.innerHTML = `
     <div class="card bg-base-100  shadow-sm mx-auto">
                     <div class="card-body">
                         <h2 class="card-title font-bold text-xl">${product.title}</h2>
-                        <p class=" text-base">$${product.description}</p>
+                        <p class=" text-base">${product.description}</p>
                         <div class="flex">
                         <p class="font-bold text-xl">$${product.price}</p>
                         <div class="flex">
@@ -64,7 +63,6 @@ const displayProducts = (products) => {
     productsByCategory.innerHTML = "";
 
     for (let product of products) {
-        // console.log(product);
         const card = document.createElement("div");
         card.innerHTML = `
                 <div class="card bg-base-100  shadow-sm mx-auto">
@@ -80,7 +78,7 @@ const displayProducts = (products) => {
                         </div>
                     </div>
                     <div class="card-body">
-                        <h2 class="card-title font-bold text-base">${product.title}</h2>
+                        <h2 class="card-title font-bold text-base truncate block">${product.title}</h2>
                         <p class="font-bold text-base">$${product.price}</p>
                         <div class="card-actions flex justify-between">
                             <button onClick="loadProductDetails(${product.id})" class="btn flex-1">
