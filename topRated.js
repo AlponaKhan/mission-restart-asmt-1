@@ -1,4 +1,4 @@
-console.log("top rated working");
+// console.log("top rated working");
 const allProducts = () => {
     fetch("https://fakestoreapi.com/products")
         .then((res) => res.json())

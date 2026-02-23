@@ -1,4 +1,4 @@
-console.log('js file working');
+// console.log('js file working');
 
 const loadAllCategory = () => {
     fetch("https://fakestoreapi.com/products/categories")
